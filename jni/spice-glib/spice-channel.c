@@ -1930,8 +1930,13 @@ SpiceChannel *spice_channel_new(SpiceSession *s, int type, int id)
             g_debug("audio channel is disabled, not creating it");
             return NULL;
         }
+        /* FIXME: spondroid does not support audio playback in this version,
+           so it can not create playback channel here, later will be
+           fixed. */
+#if 0
         gtype = type == SPICE_CHANNEL_RECORD ?
             SPICE_TYPE_RECORD_CHANNEL : SPICE_TYPE_PLAYBACK_CHANNEL;
+#endif
         break;
     }
 #ifdef USE_SMARTCARD
